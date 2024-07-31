@@ -1,0 +1,60 @@
+<p>databinding works!</p>
+<div class="border border-5">
+    <br>
+    <button class="btn btn-primary" (click)="toggleFlag()">Show/Hide</button>
+    <p [hidden]="isVisable">This is the paragraph...</p>
+</div>
+<hr>
+<div class="border border-5">
+    <br>
+    <button class="btn btn-outline-success" (click)="flag=!flag">{{flag ? "Show": "Hide"}}</button>
+    <p [hidden]="flag">This is the paragraph...</p>
+</div>
+<hr>
+<div class="border border-5">
+    <textarea name="" id="" [maxLength]="100" [(ngModel)]="textData"></textarea> <br>
+    <label for="textarea">Remaining Characters:{{100-textData.length}}</label>
+</div>
+<hr>
+<div class="border border-5">
+    <select class="btn btn-outline-secondary dropdown dropdown-header" [(ngModel)]="stateName">
+        <option>AP</option>
+        <option>TS</option>
+        <option>TN</option>
+        <option>OD</option>
+    </select> 
+    <br>
+    <label for="textarea">You selected state:{{stateName}}</label>
+</div>
+<div class="border border-5">
+    <input type="number" [(ngModel)]="val1">
+    <select [(ngModel)]="cal">
+        <option value="{{val1+val2}}">+</option>
+        <option value="{{val1-val2}}">-</option>
+        <option value="{{val1/val2}}">/</option>
+        <option value="{{val1*val2}}">*</option>
+    </select>
+    <input type="number" [(ngModel)]="val2"> <span>=</span> <label>Value is: {{cal}}</label>
+</div>
+<hr>
+<div class="border border-5">
+    <br>
+    <input type="{{flag?'text':'password'}}" style="width: 40%;">
+    <button (click)="flag=!flag">{{flag?"hide":"show"}}</button>
+</div>
+<hr>
+<div class="border border-5">
+    <h4 [class]="bgColor?'dark':'light'">Changed BackGround Color to: {{bgColor?"Dark":"Light"}}</h4>
+    <hr>
+    <h4 [attr.class]="bgColor?'dark':'light'">Changed BackGround Color to:{{bgColor?"Dark":"Light"}}</h4>
+    <br>
+    <button (click)="bgColor=!bgColor">{{bgColor?"Light":"Dark"}}</button>
+    <br>
+</div>
+<hr>
+<div class="border border-5">
+    <label>Current Value:{{currentValue}}</label> <br>
+    <button (click)="currentValue=currentValue+1">Increment</button>
+    <button (click)="currentValue=currentValue-1">Decrement</button>
+    <button (click)="currentValue=0">Reset</button>
+</div>

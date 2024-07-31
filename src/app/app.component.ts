@@ -6,6 +6,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { FormsModule } from '@angular/forms';
+import { DatabindingComponent } from './components/databinding/databinding.component';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     RouterOutlet, HeaderComponent,
     BodyComponent, FooterComponent,
     NavbarComponent,CategoriesComponent,
-    CarouselComponent
+    CarouselComponent, FormsModule, DatabindingComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
