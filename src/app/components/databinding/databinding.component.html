@@ -18,6 +18,7 @@
 <hr>
 <div class="border border-5">
     <select class="btn btn-outline-secondary dropdown dropdown-header" [(ngModel)]="stateName">
+        <option></option>
         <option>AP</option>
         <option>TS</option>
         <option>TN</option>
@@ -29,10 +30,10 @@
 <div class="border border-5">
     <input type="number" [(ngModel)]="val1">
     <select [(ngModel)]="cal">
-        <option value="{{val1+val2}}">+</option>
-        <option value="{{val1-val2}}">-</option>
-        <option value="{{val1/val2}}">/</option>
-        <option value="{{val1*val2}}">*</option>
+        <option value="Addition: {{val1+val2}}">+</option>
+        <option value="Subtraction: {{val1-val2}}">-</option>
+        <option value="Devsion: {{val1/val2}}">/</option>
+        <option value="Multiplication: {{val1*val2}}">*</option>
     </select>
     <input type="number" [(ngModel)]="val2"> <span>=</span> <label>Value is: {{cal}}</label>
 </div>
