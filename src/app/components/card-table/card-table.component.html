@@ -1,0 +1,62 @@
+<div class="container">
+    <button class="btn btn-outline-primary" (click)="flag=!flag">{{flag?'Show':'Hide'}}</button>
+    <div class="row" [hidden]=flag>
+        <div class="col">
+            @for (item of products; track $index) {
+                <p>{{item.Id}} || {{item.Name}} || {{item.Color}} || {{item.Prise}} || {{$index}}</p>
+            }
+        </div>
+    </div>
+    <hr>
+    <div class="row" [hidden]=flag>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Color</td>
+                <td>Price</td>
+                <td>Description</td>
+                <td>Status</td>
+                <td>Table Index</td>
+                <td>Actions</td>
+            </tr>
+            </thead>
+            <tbody>
+            @for (item of products; track $index) {
+                @if (item.Status == true) {
+                    <tr>
+                        <td>{{item.Id}}</td>
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Color}}</td>
+                        <td>{{item.Prise}}</td>
+                        <td>{{item.Description}}</td>
+                        <td>{{item.Status}}</td>
+                        <td>{{$index}}</td>
+                        <td><button class="btn btn-warning m-1" (click)="item.Status=false">Delete</button>
+                            <button class="btn btn-success m-1">Update Data</button>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+    <hr>
+    <div class="row" [hidden]=!flag>
+        @for (item of products; track $index) {
+            <div class="card m-1" style="width: 18rem;">
+                <img src="./images/{{item.Id}}.png" class="card-img-top" style="width: 250px; height: 300px;" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.Name}}</h5>
+                  <h5 class="card-subtitle">{{item.Prise}}/- Only</h5>
+                  <p class="card-text">{{item.Description}}</p>
+                  <p class="card-text">Color: {{item.Color}}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
