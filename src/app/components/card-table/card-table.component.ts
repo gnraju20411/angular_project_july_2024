@@ -20,5 +20,15 @@ export class CardTableComponent {
     {Id: 7, Name: "OnePlus 12R", Color: "Blue", Prise: 45874, Description: "Testing the cards...", ImageUrl: "...", Status: true},
     {Id: 8, Name: "Iphone SE", Color: "Black", Prise: 25000, Description: "Testing the cards...", ImageUrl: "...", Status: true},
     {Id: 9, Name: "Iphone 7", Color: "Green", Prise: 18000, Description: "Testing the cards...", ImageUrl: "...", Status: true}
-  ]
+  ];
+
+  ASC()
+  {
+    this.products.sort((a:any, b:any)=> b.Prise - a.Prise);
+  };
+  
+  DES()
+  {
+    this.products.sort((a:any, b:any)=> a.Prise - b.Prise);
+  };
 }

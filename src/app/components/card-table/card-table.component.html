@@ -44,6 +44,12 @@
     </div>
     <hr>
     <div class="row" [hidden]=!flag>
+    <div class="row">
+        <div class="col-sm-3 offset-2">
+            <button class="btn btn-primary mx-1" (click)="ASC()">Sort Asc</button>
+            <button class="btn btn-secondary" (click)="DES()">Sort Desc</button>
+        </div>
+    </div>
         @for (item of products; track $index) {
             <div class="card m-1" style="width: 18rem;">
                 <img src="./images/{{item.Id}}.png" class="card-img-top" style="width: 250px; height: 300px;" alt="...">
@@ -51,7 +57,7 @@
                   <h5 class="card-title">{{item.Name}}</h5>
                   <h5 class="card-subtitle">{{item.Prise}}/- Only</h5>
                   <p class="card-text">{{item.Description}}</p>
-                  <p class="card-text">Color: {{item.Color}}</p>
+                  <p class="card-text" [style.color]="item.Color">Color: {{item.Color}}</p>
                   <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
