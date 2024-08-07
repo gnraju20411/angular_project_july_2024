@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { DatabindingComponent } from "../databinding/databinding.component";
 import { CardTableComponent } from "../card-table/card-table.component";
+import { EmployeeCridComponent } from "../employee-crid/employee-crid.component";
 
 @Component({
   selector: 'app-body',
   standalone: true,
-  imports: [CardComponent, DatabindingComponent, CardTableComponent],
+  imports: [CardComponent, DatabindingComponent, CardTableComponent, EmployeeCridComponent],
   templateUrl: './body.component.html',
   styleUrl: './body.component.css'
 })

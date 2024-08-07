@@ -35,6 +35,7 @@
                         <td>{{$index}}</td>
                         <td><button class="btn btn-warning m-1" (click)="item.Status=false">Delete</button>
                             <button class="btn btn-success m-1">Update Data</button>
+                            <button class="btn btn-info m-1">View Data</button>
                         </td>
                     </tr>
                 }
@@ -45,12 +46,18 @@
     <hr>
     <div class="row" [hidden]=!flag>
     <div class="row">
-        <div class="col-sm-3 offset-2">
-            <button class="btn btn-primary mx-1" (click)="ASC()">Sort Asc</button>
-            <button class="btn btn-secondary" (click)="DES()">Sort Desc</button>
+        <div class="col-sm-6 offset-2 text-center">
+            <div class="form-group">
+                <label clsss="m-1" for="search">Search</label>
+                <!-- <input type="text" (keyup)="search()" id="search" [ngModel]="searchText"  (ngModelChange)="searchKey($event)"  placeholder="Find by name" ngModel> -->
+                <input type="text" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Find by name" ngModel>
+                <button class="btn btn-primary mx-1" (click)="ASC()">Sort Asc</button>
+                <button class="btn btn-secondary" (click)="DES()">Sort Desc</button>
+            </div>
+            
         </div>
     </div>
-        @for (item of products; track $index) {
+        @for (item of filterProducts; track $index) {
             <div class="card m-1" style="width: 18rem;">
                 <img src="./images/{{item.Id}}.png" class="card-img-top" style="width: 250px; height: 300px;" alt="...">
                 <div class="card-body">

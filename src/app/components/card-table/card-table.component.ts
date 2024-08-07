@@ -9,7 +9,8 @@ import { FormsModule } from '@angular/forms'
   styleUrl: './card-table.component.css'
 })
 export class CardTableComponent {
-  flag:Boolean=false;
+  flag:Boolean=true;
+  searchText:string="";
   products = [
     {Id: 1, Name: "Iphone 15", Color: "Pink", Prise: 50000, Description: "Testing the cards...", ImageUrl: "...", Status: true},
     {Id: 2, Name: "Iphone 14", Color: "Black", Prise: 45000, Description: "Testing the cards...", ImageUrl: "...", Status: true},
@@ -22,6 +23,8 @@ export class CardTableComponent {
     {Id: 9, Name: "Iphone 7", Color: "Green", Prise: 18000, Description: "Testing the cards...", ImageUrl: "...", Status: true}
   ];
 
+  filterProducts=this.products; 
+
   ASC()
   {
     this.products.sort((a:any, b:any)=> b.Prise - a.Prise);
@@ -31,4 +34,20 @@ export class CardTableComponent {
   {
     this.products.sort((a:any, b:any)=> a.Prise - b.Prise);
   };
+
+  ngOnInit(): void {
+    this.search();
+  }
+
+
+  searchKey(data: string) {
+    this.searchText = data;
+    this.search();
+  }
+
+  search() {
+    this.filterProducts = this.searchText === ""? this.products : this.products.filter((element) => {
+      return element.Name.toLowerCase() == this.searchText.toLowerCase();
+    });
+  }
 }
