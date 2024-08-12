@@ -1,8 +1,10 @@
 <div class="container">
     <div class="row">
-        <div class="form-group">
-            <label for="" class="for">Search: </label>
-            <!-- <input type="text" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Find by name" ngModel> -->
+        <div class="form-group col-md-4">
+            <label for="search" class="form-label">Search: </label>
+            <input class="input-group input-group-text" type="text" id="search" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Find by name" ngModel>
+            <label for="search_FullName" class="form-label">Search Full: </label>
+            <input class="input-group input-group-text" type="text" id="search_FullName" [ngModel]="searchText" (ngModelChange)="searchKey($event)" placeholder="Find by name" ngModel>
             <button class="btn btn-primary m-1" (click)="ASC()">Sort Asc</button>
             <button class="btn btn-secondary m-1" (click)="DES()">Sort Desc</button>    
         </div>
@@ -22,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-                @for (item of employees; track $index) 
+                @for (item of filteEmployees; track $index) 
                 {
                     <tr>
                         <td>{{item.id}}</td>
@@ -34,6 +36,7 @@
                         <td>{{item.SALARY}}</td>
                         <td>{{item.DEPARTMENT_ID}}</td>
                         <td><button class="btn btn-warning m-1" (click)="f1($index, item)">Delete</button>
+                            <!-- <button class="btn btn-success m-1" (click)="updateEmployee($index, item)">Update Data</button> -->
                             <button class="btn btn-success m-1">Update Data</button>
                             <button class="btn btn-info m-1" (click)="view($index, item)">View Data</button>
                         </td>

@@ -2,17 +2,21 @@ import { Component } from '@angular/core';
 import * as data from './employeeData.json';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-crid',
   standalone: true,
-  imports: [NgxPaginationModule, CommonModule],
+  imports: [CommonModule, NgxPaginationModule, FormsModule],
   templateUrl: './employee-crid.component.html',
   styleUrl: './employee-crid.component.css'
 })
 export class EmployeeCridComponent {
   employees = (data as any).default;
+
+  filteEmployees = this.employees;
+  searchText:string="";
 
   f1(index: any, item: any)
   {
@@ -66,13 +70,69 @@ export class EmployeeCridComponent {
     });
   }
 
+  // // async updateEmployee(index:any, item:any)
+  // // {
+  // //   const { value: formValues } = await Swal.fire({
+  // //     title: "Multiple inputs",
+  // //     html: `
+  // //       <input id="swal-input1" class="swal2-input" value="Testing">
+  // //       <input id="swal-input2" class="swal2-input">
+  // //     `,
+  // //     focusConfirm: false,
+  // //     preConfirm: () => {
+  // //       return [
+  // //         (document.getElementById("swal-input1") as HTMLInputElement).value,
+  // //         (document.getElementById("swal-input2") as HTMLInputElement).value
+  // //       ];
+  // //     }
+  // //   });
+  // //   if (formValues) {
+  // //     Swal.fire(JSON.stringify(formValues));
+  // //   }
+  // //   ////a:string= 
+  // // }
+
   ASC()
   {
-    this.employees.sort((a:any, b:any)=> b.FIRST_NAME - a.FIRST_NAME);
+    //localeCompare is for comparing the strings...
+    this.employees.sort((a:any, b:any)=> a.FIRST_NAME.localeCompare(b.FIRST_NAME));
   };
   
   DES()
   {
-    this.employees.sort((a:any, b:any)=> a.FIRST_NAME - b.FIRST_NAME);
+    this.employees.sort((a:any, b:any)=> b.FIRST_NAME.localeCompare(a.FIRST_NAME));
   };
+
+  ngOnInit(): void {
+    this.search();
+    this.search_FullName();
+  }
+
+
+  searchKey(data: string) {
+    this.searchText = data;
+    this.search();
+    this.search_FullName();
+  }
+
+  search() {
+      this.filteEmployees = this.searchText === ""? this.employees : this.employees.filter((element:any) => {
+      ////return element.FIRST_NAME.toLowerCase() == this.searchText.toLowerCase();
+      return JSON.stringify(element.FIRST_NAME.toLowerCase()).includes(this.searchText.toLowerCase());
+    });
+  }
+
+  search_FullName() {
+    this.filteEmployees = this.searchText === ""? this.employees : this.employees.filter((element:any) => {
+    return element.FIRST_NAME.toLowerCase() == this.searchText.toLowerCase();
+    ////return JSON.stringify(element.FIRST_NAME.toLowerCase()).includes(this.searchText.toLowerCase());
+  });
+}
+
+  // // searchProducts(searchText: string) {
+  // //   this.filteEmployees = this.employees.filter((prod: any) => {
+  // //     return JSON.stringify(prod).includes(searchText);
+  // //   })
+  // //   console.log(this.filteEmployees)
+  // // }
 }

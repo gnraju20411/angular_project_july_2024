@@ -1,0 +1,67 @@
+<p>pipes works!</p>
+<h4>{{name}}</h4>
+<h4>{{name | lowercase}}</h4>
+<h4>{{name | uppercase}}</h4>
+<h4>{{name | titlecase}}</h4>
+<h4>My Salary: {{mySal | currency}}</h4>
+<h4>My Salary: {{mySal | currency : "INR"}}</h4>
+<h4>My Salary: {{mySal | currency : "USD"}}</h4>
+<h5>My Salary is: {{mySal | currency : '&euro;'}}</h5>
+<h5>My Salary is: {{mySal | currency : '&#20803;'}}</h5>
+<h5>Date: {{today}}</h5>
+<h5>Date: {{today | date}}</h5>
+<h5>Date(short): {{today | date: 'short'}}</h5>
+<h5>Date(shortDate): {{today | date: 'shortDate'}}</h5>
+<h5>Date(medium): {{today | date: 'medium'}}</h5>
+<h5>Date(mediumDate): {{today | date: 'mediumDate'}}</h5>
+<h5>Date(long): {{today | date: 'long'}}</h5>
+<h5>Date(longDate): {{today | date: 'longDate'}}</h5>
+<h5>Date(shortTime): {{today | date: 'shortTime'}}</h5>
+<h5>Date(mediumtTime): {{today | date: 'mediumTime'}}</h5>
+<h5>Date(longTime): {{today | date: 'longTime'}}</h5>
+<h5>Date(fullTime): {{today | date: 'fullTime'}}</h5>
+<h5>Date: {{today | date: 'dd-MM-yy'}}</h5>
+<h5>Date: {{today | date: 'dd-MMM-yy'}}</h5>
+<h5>Date: {{today | date: 'dd-MM-yyyy'}}</h5>
+<h5>Date: {{today | date: 'dd-MMM-yyyy'}}</h5>
+<h5>Date: {{today | date: 'dd.MMMM.yy'}}</h5>
+
+<h5>{{today | date : 'dd.MMMM.yyyy' | uppercase}}</h5>
+<h5>{{today | date : 'dd.MMMM.yyyy' | lowercase}}</h5>
+<h5>{{today | date : 'dd.MMMM.yyyy' }}</h5>
+<hr />
+<h4>{{ 12.111222333 | number: "3.2-5" }}</h4>
+<h4>{{ 12.2345678 | number: "3.2-5" }}</h4>
+<h4>{{ 2.1 | number: "3.2-5" }}</h4>
+<h4>{{ 2.5 | percent}}</h4>
+<h4>{{ 0.25 | percent}}</h4>
+<hr />
+<h4>{{user}}</h4>
+<h4>{{user | json}}</h4>
+@for(entry of user | keyvalue;track $index){
+<h5>{{entry.key}}---{{entry.value}}</h5>
+}
+<hr />
+<h5>{{arr}}</h5>
+<h5>{{arr | slice : 2 : 4}}</h5>
+<h5>{{arr | slice : 2 }}</h5>
+<hr />
+<!-- <input type="number" [(ngModel)]="num" />
+<h5>Num value is {{num}}</h5>
+<textarea [(ngModel)]="msg" maxlength="100"></textarea>
+<h5>{{msg | remaining}}</h5>
+<textarea [(ngModel)]="msg2" maxlength="200"></textarea>
+<h5>{{msg2 | remaining : 200}}</h5>
+<hr />
+<h5>{{longStr | truncate }}</h5>
+<h5>{{longStr | truncate : 12 }}</h5>
+<h5>{{longStr | truncate : 12 : true }}</h5>
+<h5>{{longStr | truncate : 12 : false : '***' }}</h5>
+<hr />
+<h5>
+    @for(val of arr | mySort;track $index){
+    <span>{{val}}, &nbsp;</span>
+    }
+</h5>
+<input type="number" #num1 />
+<button (click)="arr.push(+num1.value)">Add</button> -->
