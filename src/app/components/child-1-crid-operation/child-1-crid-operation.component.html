@@ -1,0 +1,27 @@
+<div>
+    <table class="table table-staraped">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Job-Title</td>
+                <td>Salary</td>
+            </tr>
+        </thead>
+        <tbody>
+            @for(employee of employees | paginate: { itemsPerPage: 6, currentPage: p }; track employee.id){
+                <tr>
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.job_titles}}</td>
+                    <td>{{employee.salary | currency: "INR"}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

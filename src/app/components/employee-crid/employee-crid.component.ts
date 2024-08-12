@@ -14,7 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class EmployeeCridComponent {
   employees = (data as any).default;
-
+  ////DataSet
+  ////https://www.kaggle.com/datasets/oyekanmiolamilekan/fake-employee-dataset?resource=download
   filteEmployees = this.employees;
   searchText:string="";
 
