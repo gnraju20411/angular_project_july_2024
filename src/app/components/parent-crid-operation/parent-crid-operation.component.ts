@@ -11,7 +11,7 @@ import { Child1CridOperationComponent } from '../child-1-crid-operation/child-1-
   imports: [Child1CridOperationComponent, Child2CridOperationComponent],
   templateUrl: './parent-crid-operation.component.html',
   styleUrl: './parent-crid-operation.component.css',
-  outputs:['employees', 'a']
+  outputs:['employees']
 
 })
 export class ParentCridOperationComponent {

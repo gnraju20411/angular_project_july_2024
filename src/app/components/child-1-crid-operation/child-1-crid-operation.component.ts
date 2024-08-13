@@ -15,4 +15,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
 export class Child1CridOperationComponent {
   employees:any;
   p:any;
+
+  deleteMe(id:any)
+  {
+    this.employees.splice(id,1);
+  }
 }
+

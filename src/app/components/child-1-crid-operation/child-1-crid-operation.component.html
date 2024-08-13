@@ -15,6 +15,7 @@
                     <td>{{employee.name}}</td>
                     <td>{{employee.job_titles}}</td>
                     <td>{{employee.salary | currency: "INR"}}</td>
+                    <td><button class="btn btn-danger" (click)="deleteMe(employee.id)">Delete</button></td>
                 </tr>
             }
         </tbody>
