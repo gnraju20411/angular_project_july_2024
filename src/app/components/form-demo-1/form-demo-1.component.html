@@ -1,15 +1,26 @@
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+</style>
+
 <p>form-demo-1 works!</p>
 <div class="container">
     <div class="col-sm-6">
         <form #myForm="ngForm" (submit)="submitMyForm(myForm)">
             <p>
-                First Name: <input type="text" name="" id="">
+                First Name: <input type="text" name="firstName" #fName="ngModel" required ngModel minlength="6"/>
+                <span *ngIf="fName.dirty && fName.hasError('required')" class="text-danger m-2">FirstName is Required</span>
+                <span *ngIf="fName.dirty && fName?.errors?.['minlength']" class="text-danger m-2">minimum 5 characters</span>
             </p>
             <p>
-                Last Name: <input type="text" name="" id="">
+                Last Name: <input type="text" name="lastName" #lName="ngModel" ngModel/>
             </p>
             <p>
-                Your Full Name: 
+                Your Full Name: {{lName.value | titlecase }}&nbsp;{{fName.value | titlecase}}
             </p>
             <p>
                 Gender: <input type="radio" value="Male" name="Gender" id="Gender">Male <input type="radio" name="Gender" id="Gender" value="Female">FeMale
@@ -21,33 +32,41 @@
                 Email: <input type="email" name="" id="">
             </p>
             <p>
-                Phone Number: <input type="number" name="" id="">
+                Phone Number: <input type="number" name="phone" #phone="ngModel" minlength="10" maxlength="10" required ngModel/>
+                <span *ngIf="phone.dirty && phone.hasError('required')" class="text-danger m-2">PhoneNumber is Required</span>
             </p>
             <p>
-                Address: <textarea name="" id=""></textarea>
+                Address: <textarea name="addressArea" #addressArea="ngModel" maxlength="400" required ngModel></textarea><br>
+                Remaining Characters: {{addressArea.value}}
+                <span *ngIf="addressArea.dirty && addressArea.hasError('required')" class="text-danger m-2">Address is Required</span>
             </p>
             <p>
                 State: 
-                <select name="" id="">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                <select name="stateName" #stateName="ngModel" value="Select State" ngModel>
+                    <option value="AP">AP</option>
+                    <option value="TS">TS</option>
+                    <option value="OD">OD</option>
+                    <option value="TN">TN</option>
                 </select>
             </p>
             <p>
                 City: <input type="text" name="" id="">
             </p>
             <p>
-                Pin Code: <input type="number" name="" id="">
+                Pin Code: <input type="number" name="pinCode" #pCode="ngModel" minlength="6" maxlength="6" required ngModel/>
             </p>
             <p>
-                Password: <input type="password" name="" id="">
+                Password: <input type="password" name="password" #password="ngModel" ngModel required/>
             </p>
             <p>
-                Confirm Password: <input type="password" name="" id="">
+                Confirm Password: <input type="password" name="cPassword" #cPassword="ngModel" ngModel required>
             </p>
-            <input type="submit" value="Submit" class="btn btn-primary m-1">
+            <input type="submit" value="Submit" class="btn btn-primary m-1" [disabled]="myForm.invalid">
             <input type="reset" value="ReSet" class="btn btn-secondary m-2">
         </form>
     </div>
+
+    <pre>{{myForm.status}}</pre>
+    <pre>{{myForm.value | json}}</pre>
+    
 </div>
